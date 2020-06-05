@@ -5,16 +5,17 @@ import axios from 'axios'
 class AddStudent extends React.Component {
     state = { 
       Username:"",
-      Password:""
+      Password:"",
+      
      }
      
   handleChange = ()=> {
       const Username= this.state.Username;
       const Rollno= this.state.Password;
-      console.log("studentname: ",Username+" "+"rollnumber: ",Rollno)
-       axios.post('http://localhost:3000/admin/addstudent',{
-         name: Username,
-         rollno: Rollno
+      console.log("studentname: ",Username+" ","rollnumber: ",Rollno)
+      axios.post('http://localhost:3000/admin/addstudent',{
+        name: Username,
+        rollno: Rollno
        })
        .then(res => 
         console.log(res),
@@ -24,9 +25,9 @@ class AddStudent extends React.Component {
     }     
  
      render() { 
-   
+
         return (
-            <div>
+            <div style={{padding:"5%"}}>
             <h1>
                 Register Students
             </h1>
@@ -46,8 +47,8 @@ class AddStudent extends React.Component {
                   </Form.Item>
             
                   <Form.Item
-                    label="RollNumber"
-                    name="RollNUmber"
+                    label="Registeration No"
+                    name="Registeration No"
                     rules={[
                       {
                         
@@ -58,10 +59,9 @@ class AddStudent extends React.Component {
                     <Input width="50%" onChange={(event)=>this.setState({Password:event.target.value})}/>
                   </Form.Item>
                   
+                  
                   <Form.Item >
-                    <Button type="primary" htmlType="submit" >
-                      Submit
-                    </Button>
+                      <Button type="primary" htmlType="submit" >Submit </Button>
                   </Form.Item>
                 </Form>      
                 </div>

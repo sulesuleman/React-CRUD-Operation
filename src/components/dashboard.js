@@ -3,7 +3,6 @@ import React from 'react';
 import './dashboard.css';
 // import {Link} from 'react-router-dom';
 import axios from 'axios';
-import {button} from 'antd';
 import {Link } from 'react-router-dom';
 
 
@@ -25,7 +24,7 @@ class Dashboard extends React.Component {
           })
     }   
     componentDidMount() {
-         axios.get('http://localhost:3000/admin/students')
+        axios.get('http://localhost:3000/admin/students')
             .then(res => {
                 this.setState({
                     record:res.data
@@ -42,6 +41,13 @@ class Dashboard extends React.Component {
 
         return (
             <div>
+        <section id="banner">
+          <div class="inner">
+            <h1>Welcome</h1>
+            <p>Checkout all Record at one click.</p>
+          </div>
+        </section>
+        <div style={{padding:"5%"}}>
             <h1>
                 List of All Registered Students
             </h1>
@@ -69,7 +75,7 @@ class Dashboard extends React.Component {
                     
 
             </table>
-
+</div>
   </div>
           );
 }

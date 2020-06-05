@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Button} from 'antd';
 import axios from 'axios'
+import Password from 'antd/lib/input/Password';
 
 class UpdateStudent extends React.Component {
     state = { 
@@ -9,11 +10,12 @@ class UpdateStudent extends React.Component {
      }
      
   handleChange = ()=> {
-      const id=this.props.match.params.id;
-      const Username= this.state.Name;
-      const Rollno= this.state.Rollno;
-      console.log("studentname: ",Username+" "+"rollnumber: ",Rollno)
-      axios.put(`http://localhost:3000/admin/updatestudent/${id}/${Username}/${Rollno}`)
+    const id=this.props.match.params.id;
+    const Username= this.state.Name;
+    const Rollno= this.state.Rollno;
+    console.log("studentname: ",Username+" "+"rollnumber: ",Rollno)
+    
+    axios.put(`http://localhost:3000/admin/updatestudent/${id}/${Username}/${Rollno}`)
         .then(res => 
         console.log(res),
         alert('Data Successfully Updated!'))
@@ -24,7 +26,7 @@ class UpdateStudent extends React.Component {
      render() { 
    
         return (
-            <div>
+            <div style={{padding:"5%"}}>
             <h1>
                 Register Students
             </h1>
@@ -55,12 +57,12 @@ class UpdateStudent extends React.Component {
                   >
                     <Input  onChange={(event)=>this.setState({Rollno:event.target.value})}/>
                   </Form.Item>
-                  
-                  <Form.Item >
+
+                  <center><Form.Item >
                     <Button type="primary" htmlType="submit" >
-                      Update
+                      Update Student
                     </Button>
-                  </Form.Item>
+                  </Form.Item></center>
                 </Form>      
                 </div>
           );

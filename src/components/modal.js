@@ -21,7 +21,7 @@ class DetailModal extends React.Component {
     render() {
          
         return ( 
-            
+            <div style={{padding:"5%"}}>
             <div className="site-card-border-less-wrapper">
            <center> <Card title="COMSATS University" bordered={false} style={{ width: "40%" }}>
                 
@@ -29,6 +29,7 @@ class DetailModal extends React.Component {
                             <p>{this.state.student.rollno}</p>
             
              </Card></center>
+          </div>
           </div>
 
             )

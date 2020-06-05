@@ -1,6 +1,7 @@
 import { Layout, Menu, } from 'antd';
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './layout.css';
 const { Header, Content, Footer } = Layout;
 
 class CustomLayout extends React.Component {
@@ -10,14 +11,14 @@ class CustomLayout extends React.Component {
     <Header>
       <div className="logo"/>
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-        <Menu.Item key="1"><Link to="/">Dashboard</Link></Menu.Item>
-        <Menu.Item key="2"><Link to ="/addstudent">Add Students</Link></Menu.Item>
-        <Menu.Item key="3"><Link to ="/updatestudent">Update Students</Link></Menu.Item>
-        
+        <Menu.Item key="1"><Link to ="/">Hello PropS</Link></Menu.Item>
+        <Menu.Item key="2"><Link to="/dashboard">Dashboard</Link></Menu.Item>
+        <Menu.Item key="3"><Link to ="/addstudent">Add Students</Link></Menu.Item>
+        <Menu.Item key="4"><Link to ="/updatestudent">Update Students</Link></Menu.Item>
       </Menu>
     </Header>
-    <Content >
-      <div className="site-layout-content" style={{padding:"5%"}}>
+    <Content>
+      <div className="site-layout-content">
           {this.props.children}
       </div>
     </Content>

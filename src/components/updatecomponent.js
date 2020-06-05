@@ -6,31 +6,31 @@ const { Option } = Select;
 
 class UpdateComponent extends React.Component {
     state = { 
-        students:[],
-        Username:"",
-        Password:"",
-        Select: ""
+      students:[],
+      Username:"",
+      Password:"",
+      Select: ""
     }
 
      
      componentDidMount() {
         axios.get('http://localhost:3000/admin/students')
-        .then(res => {
-            this.setState({
-                students:res.data
-            });
-            console.log("students: ",this.state.students);
-            
-        })  
+          .then(res => {
+              this.setState({
+                  students:res.data
+              });
+              console.log("students: ",this.state.students);
+              
+          })  
      }
 
-  handleChange = ()=> {
+  onhandleChange = ()=> {
 
-      const Username= this.state.Name;
-      const Rollno= this.state.Rollno;
-      console.log("studentname: ",Username+" "+"rollnumber: ",Rollno)
-      axios.put(`http://localhost:3000/admin/updatestudent/${this.state.Select}/${Username}/${Rollno}`)
-        .then(res => 
+    const Username= this.state.Name;
+    const Rollno= this.state.Rollno;
+    console.log("studentname: ",Username+" "+"rollnumber: ",Rollno)
+    axios.put(`http://localhost:3000/admin/updatestudent/${this.state.Select}/${Username}/${Rollno}`)  
+      .then(res => 
         console.log(res),
         alert('Data Successfully Updated!'))
        .catch(error=> console.error(error));
@@ -44,15 +44,17 @@ class UpdateComponent extends React.Component {
                 Select: value
             })
           }
+          
         return (
-            <div>
+            <div style={{padding:"5%"}}>
             <h1>
-                Register Students
+                UPDATE Students
             </h1>
             
-            <Form onFinish={(event) => this.handleChange(event)}>
+            <Form onFinish={(event) => this.onhandleChange(event)}>
                 
-                <Select defaultValue="Select Students" style={{ width: 120, marginLeft:"12%",marginBottom:"2%" }} onChange={handleChange}>
+                <Select defaultValue="Select Students" style={{ width: 120, marginLeft:"4%",marginBottom:"2%" }} 
+                onChange={handleChange}>
                     {
                         this.state.students.map((item)=>{
                             return(
@@ -75,8 +77,8 @@ class UpdateComponent extends React.Component {
                   >
                     <Input onChange={(event)=>this.setState({Name:event.target.value})} />
                   </Form.Item>
-            
-                  <Form.Item
+                  
+                 <Form.Item
                     label="RollNumber"
                     name="RollNUmber"
                     rules={[
@@ -88,7 +90,7 @@ class UpdateComponent extends React.Component {
                   >
                     <Input  onChange={(event)=>this.setState({Rollno:event.target.value})}/>
                   </Form.Item>
-                  
+                   
                   <Form.Item >
                     <Button type="primary" htmlType="submit" >
                       Update
